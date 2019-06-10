@@ -1,0 +1,10 @@
+[{
+    "local": {
+      "seleniumAddress": "http://localhost:4444/wd/hub",
+      "baseUrl": "https://pokedex-angular-example.herokuapp.com"
+    },
+    "homolog": {
+      "seleniumAddress": "http://localhost:4444/wd/hub",
+      "baseUrl": "https://homolog_url"
+    }
+  }]

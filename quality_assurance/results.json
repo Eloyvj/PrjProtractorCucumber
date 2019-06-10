@@ -1,0 +1,96 @@
+[
+  {
+    "keyword": "Feature",
+    "name": "Pokedex list",
+    "line": 4,
+    "id": "pokedex-list",
+    "tags": [
+      {
+        "name": "@example",
+        "line": 3
+      }
+    ],
+    "uri": "features/search_pokedex.feature",
+    "elements": [
+      {
+        "id": "pokedex-list;search-pokemons-by-name",
+        "keyword": "Scenario",
+        "line": 8,
+        "name": "Search pokemons by name",
+        "tags": [
+          {
+            "name": "@example",
+            "line": 3
+          },
+          {
+            "name": "@search",
+            "line": 7
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 9,
+            "name": "I am in pokemons list",
+            "match": {
+              "location": "features/step_definitions/search_pokedex_steps.js:7"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2189000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 10,
+            "name": "I type name mewtow in search field",
+            "match": {
+              "location": "features/step_definitions/search_pokedex_steps.js:11"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 815000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 11,
+            "name": "I should see the updated list with searched pokemon",
+            "match": {
+              "location": "features/step_definitions/search_pokedex_steps.js:16"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 164000000
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "match": {
+              "location": "features/hooks/hooks.js:10"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "match": {
+              "location": "../node_modules/protractor-cucumber-framework/lib/resultsCapturer.js:26"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1000000
+            }
+          }
+        ]
+      }
+    ]
+  }
+]
