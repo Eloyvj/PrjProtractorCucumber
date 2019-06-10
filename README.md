@@ -21,7 +21,7 @@
 
 ### Clone
 
-- Clone this repo to your local machine using `https://nome.do.repo`
+- Clone this repo to your local machine using `https://github.com/Eloyvj/e2e_protractor`
 
 ### Run test
 
