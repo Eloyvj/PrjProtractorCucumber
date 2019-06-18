@@ -9,6 +9,9 @@ switch (TEST_ENV) {
   case 'local':
     environmentParameters = Data[0].local
     break
+  case 'homolog':
+    environmentParameters = Data[1].homolog
+    break
 }
 
 exports.config = {
@@ -32,35 +35,50 @@ exports.config = {
   exclude: [
   ],
 
-  capabilities: {
+  multiCapabilities: [{
+    'browserName': 'firefox',
+    // Info for report
+    metadata: {
+      device: 'Macbook Pro',
+      platform: {
+        name: 'OSX'
+      }
+    }
+  },
+  {
     'browserName': 'chrome',
     chromeOptions: {
       args: [
         '--disable-gpu'
       ]
+    },
+    // Info for report
+    metadata: {
+      device: 'Macbook Pro',
+      platform: {
+        name: 'OSX'
+      }
     }
-  },
+  }
+  ],
 
   cucumberOpts: {
     require: '../features/step_definitions/*.js',
-    // tags: ['~@notImplemented'],
-    tags: ['@search'],
-    format: ['json:results.json'],
-    profile: false,
-    'no-source': true
+    tags: ['~@notImplemented'],
+    // tags: ['@search'],
+    format: 'json:.tmp/results.json',
+    strict: true
   },
 
+  plugins: [{
+    package: 'protractor-multiple-cucumber-html-reporter-plugin',
+    options: {
+      automaticallyGenerateReport: true,
+      removeExistingJsonReportFile: true
+    }
+  }],
+
   beforeLaunch: function () {
-    setTimeout(function () {
-      browser.driver.executeScript(function () {
-        return {
-          width: window.screen.availWidth,
-          height: window.screen.availHeight
-        }
-      }).then(function (result) {
-        browser.driver.manage().window().setSize(result.width, result.height)
-      })
-    })
   },
 
   onPrepare: function () {
@@ -68,27 +86,10 @@ exports.config = {
     // False: app Angular
     // True: app not Angular
     browser.ignoreSynchronization = false
+    // Set window size for maximum size
+    browser.driver.manage().window().maximize()
   },
 
   afterLaunch: function () {
-    var reporter = require('cucumber-html-reporter')
-
-    var options = {
-      theme: 'bootstrap',
-      jsonFile: 'results.json',
-      output: 'report/cucumber_report.html',
-      reportSuiteAsScenarios: true,
-      launchReport: true,
-      storeScreenshots: false,
-      metadata: {
-        'App Version': '0.0.1',
-        'Test Environment': 'STAGING',
-        'Browser': 'Chrome  69.0.3497.100',
-        'Platform': 'OSX',
-        'Parallel': 'Scenarios',
-        'Executed': 'Remote'
-      }
-    }
-    reporter.generate(options)
   }
 }
