@@ -6,5 +6,9 @@
     "homolog": {
       "seleniumAddress": "http://localhost:4444/wd/hub",
       "baseUrl": "https://homolog_url"
+    },
+    "cloud": {
+      "seleniumAddress": "http://hub-cloud.browserstack.com/wd/hub",
+      "baseUrl": "https://pokedex-angular-example.herokuapp.com"
     }
   }]
